@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        font-family: sans-serif;
+    }
+</style>
+
+<body>
+
+
+    <script>
+
+        function openFridge(...foods) {
+            document.write(...foods)
+        }
+
+        const food1 = 'Pizza';
+        const food2 = 'Hamburger';
+        const food3 = 'Hotdog';
+        const food4 = 'Sushi';
+        const food5 = 'Ramen';
+
+        openFridge(food1, food2, food3, food4, food5, "<hr>")
+
+        function sum(...numbers) {
+            let result = 0
+            for (let number of numbers) {
+                result += number
+            }
+            document.write(`Your Total is: $${result}`)
+        }
+
+        sum(7, 8, 3, 5, 3)
+
+
+    </script>
+</body>
+
+</html>

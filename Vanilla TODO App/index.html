@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla JS Notes App | Phoenix Notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="input">
+        <input type="text" name="Note" id="noteInput" placeholder="Type Your Note Press Enter or Click Add">
+        <button id="addNote">Add</button>
+    </div>
+
+    <div class="container" id="noteUl"></div>
+
+    <div class="updateCard" id="update-card">
+        <h1 id="note-card-id"></h1>
+        <textarea id="noteText"></textarea>
+        <div class="buttons">
+            <button class="upd-btn" id="upd-btn">Update</button>
+            <button class="del-btn" id="del-btn">Delete</button>
+            <button class="close-btn" id="close-btn">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>

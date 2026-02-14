@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRM - Sign-Up</title>
+    <link rel="stylesheet" href="Signup.css">
+</head>
+
+<body>
+    <div class="main">
+        <form id="signup">
+            <input type="text" name="username" placeholder="Set your username" required>
+            <input type="email" name="email" placeholder="Enter Your Email" required>
+            <input type="password" name="password" placeholder="Create a Password" required>
+            <button id="signUpButton">Sign Up</button>
+            <h4>Already have an account? <a style="cursor: pointer;" onclick="dialog.showModal()">Login</a></h4>
+        </form>
+    </div>
+
+    <dialog id="login">
+        <form id="loginForm">
+            <input type="text" name="loginUsername" placeholder="Set your username" required>
+            <input type="password" name="loginPassword" placeholder="Create a Password" required>
+            <button id="loginButton">Login</button>
+            <h4><a style="cursor: pointer;" onclick="dialog.close()">Back to Signup</a></h4>
+        </form>
+    </dialog>
+
+    <script src="Signup.js"></script>
+</body>
+
+</html>

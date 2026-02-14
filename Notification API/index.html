@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Notification API</title>
+</head>
+
+<body>
+
+    <button id="btn">Notify Me</button>
+    <button popovertarget="mypopover">Toggle the popover</button>
+    <div id="mypopover" popover>Popover content</div>
+
+    <script>
+        let Button = document.getElementById("btn")
+        // let n = Notification.requestPermission()
+
+        const NotifyMe = () => {
+            if (!("Notification" in window)) {
+                alert("Notification is not Suported")
+            }
+            else if (Notification.permission === "granted") {
+                const notification = new Notification("Hi There")
+            } else if (Notification.permission === "denied") {
+                Notification.requestPermission()
+                    .then((permission) => {
+                        if (permission === "granted") {
+                            const notification = new Notification("Hi, There")
+                        }
+                    })
+            }
+        }
+        Button.addEventListener("click", NotifyMe)
+    </script>
+</body>
+
+</html>

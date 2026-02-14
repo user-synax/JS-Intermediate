@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Event Listeners</title>
+</head>
+<body>
+    
+    <button id="click">Click</button>
+    <button id="changeColor">Change Color</button>
+
+    <script>
+        let click = document.getElementById("click")
+        let changeColor = document.getElementById("changeColor")
+
+        click.addEventListener("click", () => alert("This is click event"))
+
+        const random = (number) => {
+            return Math.floor(Math.random() * (number + 1))
+        }
+
+        changeColor.addEventListener("blur", () => {
+            const rndCol = `rgb(${random(255)} ${random(255)} ${random(255)})`
+            document.body.style.backgroundColor = rndCol
+        })
+
+    </script>
+</body>
+</html>

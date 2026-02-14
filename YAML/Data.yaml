@@ -1,0 +1,7 @@
+users:
+    1:
+        -Name: "Ayush"
+        -Age: 20
+    2:
+        -Name: "Sujal"
+        -Age: 17

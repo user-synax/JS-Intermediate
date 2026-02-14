@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Event Planner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        input,
+        select,
+        button {
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        button {
+            grid-column: span 2;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .event-list {
+            margin-top: 30px;
+        }
+
+        .event-card {
+            background: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 5px solid #007bff;
+            border-radius: 4px;
+        }
+
+        .event-card button {
+            background: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Event Planner</h1>
+
+    <div class="container">
+        <form id="eventForm">
+            <input type="text" placeholder="Event Type" id="eventType" required />
+            <input type="datetime-local" id="dateTime" required />
+
+            <input type="text" placeholder="Location" id="location" required />
+            <input type="number" placeholder="Budget" id="budget" required />
+
+            <select id="planningType" required>
+                <option value="">Planning Type</option>
+                <option>Full Planning</option>
+                <option>Partial Planning</option>
+                <option>On-Day Planning</option>
+            </select>
+
+            <select id="theme" required>
+                <option value="">Theme</option>
+                <option>Royal</option>
+                <option>Classic</option>
+                <option>Bollywood</option>
+                <option>Modern</option>
+            </select>
+
+            <input type="text" placeholder="Decoration Type" id="decoration" required />
+            <input type="number" placeholder="Guest Capacity" id="guests" required />
+
+            <button type="submit">Add Event</button>
+        </form>
+
+        <div class="event-list" id="eventList"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById("eventForm");
+        const eventList = document.getElementById("eventList");
+
+        let events = JSON.parse(localStorage.getItem("events")) || [];
+
+        function saveEvents() {
+            localStorage.setItem("events", JSON.stringify(events));
+        }
+
+        function renderEvents() {
+            eventList.innerHTML = "";
+
+            events.forEach((event, index) => {
+                const div = document.createElement("div");
+                div.className = "event-card";
+
+                div.innerHTML = `
+          <strong>${event.eventType}</strong><br>
+          📅 ${event.dateTime}<br>
+          📍 ${event.location}<br>
+          💰 Budget: ${event.budget}<br>
+          📝 Planning: ${event.planningType}<br>
+          🎨 Theme: ${event.theme}<br>
+          ✨ Decoration: ${event.decoration}<br>
+          👥 Guests: ${event.guests}<br>
+          <button onclick="deleteEvent(${index})">Delete</button>
+        `;
+
+                eventList.appendChild(div);
+            });
+        }
+
+        function deleteEvent(index) {
+            events.splice(index, 1);
+            saveEvents();
+            renderEvents();
+        }
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const newEvent = {
+                eventType: eventType.value,
+                dateTime: dateTime.value,
+                location: location.value,
+                budget: budget.value,
+                planningType: planningType.value,
+                theme: theme.value,
+                decoration: decoration.value,
+                guests: guests.value,
+            };
+
+            events.push(newEvent);
+            saveEvents();
+            renderEvents();
+            form.reset();
+        });
+
+        renderEvents();
+    </script>
+
+</body>
+
+</html>

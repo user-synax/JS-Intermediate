@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        height: 80vh;
+        /* position: absolute; */
+    }
+
+    #box {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        background-color: #63e;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #text {
+        font-size: 0.8rem;
+        color: #fff;
+        font-family: sans-serif;
+    }
+</style>
+
+<body>
+
+    <div id="box">
+        <h1 id="text">...</h1>
+    </div>
+
+    <script>
+        const player = document.getElementById('box');
+        const moveAmount = 100; // Pixels to move per key press
+        const Text = document.getElementById("text")
+
+        document.addEventListener('keydown', (event) => {
+            const currentTop = parseInt(player.style.top) || 0;
+            const currentLeft = parseInt(player.style.left) || 0;
+
+
+            switch (event.key) {
+                case 'ArrowUp':
+                    player.style.top = (currentTop - moveAmount) + 'px';
+                    Text.innerText = "Moving Up"
+                    break;
+                case 'ArrowDown':
+                    player.style.top = (currentTop + moveAmount) + 'px';
+                    Text.innerText = "Moving Down"
+                    break;
+                case 'ArrowLeft':
+                    player.style.left = (currentLeft - moveAmount) + 'px';
+                    Text.innerText = "Moving Left"
+                    break;
+                case 'ArrowRight':
+                    player.style.left = (currentLeft + moveAmount) + 'px';
+                    Text.innerText = "Moving Right"
+                    break;
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Css -->
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #cursor {
+            width: 40px;
+            height: 40px;
+            background-color: hsla(253, 100%, 29%, 0.39);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+        }
+
+        body:has(.btn:hover) #cursor {
+            width: 80px;
+            height: 80px;
+            transform: translate(-50%, -50%);
+            background-color: transparent;
+            border: 2px solid rgba(0, 0, 0, 0.5);
+            corner-shape: scoop;
+            animation: glow 2s infinite;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0px 0px 30px orangered;
+            }
+
+            to {
+                box-shadow: 0px 0px 80px orangered;
+            }
+        }
+
+        .btn {
+            width: 300px;
+            height: 40px;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+            border-radius: 24px;
+            corner-shape: scoop;
+            font-family: sans-serif;
+            background-color: transparent;
+            transition: all .2s ease;
+        }
+
+        .btn:hover {
+            transition: all .2s ease;
+            background-color: orangered;
+            color: #fff;
+        }
+    </style>
+
+    <!-- HTML -->
+    <div id="cursor"></div>
+    <button class="btn">Hove Me</button>
+
+    <!-- JavaScript -->
+    <script>
+        let cursor = document.getElementById("cursor")
+        window.addEventListener("mousemove", (e) => {
+            cursor.style.left = `${e.clientX}px`
+            cursor.style.top = `${e.clientY}px`
+        })
+    </script>
+</body>
+
+</html>

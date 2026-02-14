@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date & Time Functions</title>
+</head>
+
+<body>
+
+    <h1 id="time"></h1>
+    <button id="startBtn">Start Time</button>
+    <button id="stopBtn">Stop Time</button>
+    <script>
+        let timePreview = document.getElementById("time")
+        let stopButton = document.getElementById("stopBtn")
+        let startButton = document.getElementById("startBtn")
+
+        const displayTime = () => {
+            let CurrentDate = new Date()
+            let time = `${CurrentDate.getHours()}:${CurrentDate.getMinutes()}:${CurrentDate.getSeconds()}`
+            timePreview.textContent = time
+        }
+        let interval = setInterval((displayTime), 1000)
+        startButton.addEventListener("click", () => {
+            setInterval((displayTime), 1000)
+        })
+
+        stopButton.addEventListener("click", () => {
+            clearInterval(interval)
+        })
+    </script>
+</body>
+
+</html>

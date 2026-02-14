@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Learning Class In JS - OOPS</title>
+</head>
+<body>
+
+    <script>
+        class Car{
+            constructor(name, model, color, year){
+                this.carname = name || "BMW"
+                console.log("New Car Addedd...")
+            }
+
+            fuelUp(){
+                console.log("Vehicle Fuel is Refilled")
+            }
+
+            getDetail(){
+                console.log(`Name: ${this.carname}`);
+            }
+        }
+
+        class Bike extends Car{
+            constructor(){
+                super(name)
+                this.bikename = name || "Ninja H2R"
+                console.log("New Bike Addedd...")
+            }
+        }
+
+        let car1 = new Car()
+        let Bike1 = new Bike()
+
+    </script>
+    
+</body>
+</html>

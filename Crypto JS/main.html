@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="text" id="textInput" placeholder="Enter Something">
+    <p id="previewText"></p>
+    <button onclick="SHA256()">SHA256</button>
+    <button onclick="MD5()">MD5</button>
+    <button id="savePSWD">Save Password</button>
+    <button id="checkPSWD">Check Password</button>
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+        let previewText = document.getElementById("previewText")
+        let inputField = document.getElementById("textInput")
+
+        let savePassword = document.getElementById("savePSWD")
+        let checkPassword = document.getElementById("checkPSWD")
+
+
+        const SavePasswordToLocalstorage = () => {
+            let userInput = inputField.value.trim()
+            let hashedPassword = CryptoJS.SHA256(userInput).toString()
+            localStorage.setItem("Password", hashedPassword)
+            alert("Password Saved")
+        }
+
+        const CheckPasswordFromLocalstorage = () => {
+            let userInput = inputField.value.trim()
+            let localPassword = localStorage.getItem("Password")
+            let hashedUserInput = CryptoJS.SHA256(userInput).toString()
+            console.log(localPassword);
+            if (hashedUserInput == localPassword) {
+                alert("Access")
+            } else {
+                alert("Denied")
+            }
+        }
+
+        savePassword.addEventListener('click', SavePasswordToLocalstorage)
+        checkPassword.addEventListener('click', CheckPasswordFromLocalstorage)
+
+        const SHA256 = () => {
+            let userInput = inputField.value.trim()
+            let hashedTO256 = CryptoJS.SHA256(userInput).toString()
+            previewText.textContent = hashedTO256
+        }
+
+        const MD5 = () => {
+            let userInput = inputField.value.trim()
+            let hashedTOMD5 = CryptoJS.MD5(userInput).toString()
+            previewText.textContent = hashedTOMD5
+        }
+
+        console.log(crypto.randomBytes(5));
+    </script>
+</body>
+
+</html>

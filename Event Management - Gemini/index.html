@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Planner Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>✨ Event Manager</h1>
+
+        <section class="form-section">
+            <form id="eventForm">
+                <div class="grid">
+                    <input type="text" id="type" placeholder="Event Type (e.g. Wedding)" required>
+                    <input type="datetime-local" id="dateTime" required>
+                    <input type="text" id="location" placeholder="Location" required>
+                    <input type="number" id="budget" placeholder="Budget ($)" required>
+                    <select id="planningType">
+                        <option value="Full Service">Full Service</option>
+                        <option value="Partial">Partial Planning</option>
+                        <option value="Day-of Coordination">Day-of Coordination</option>
+                    </select>
+                    <input type="text" id="theme" placeholder="Theme (Royal, Bollywood...)" required>
+                    <input type="text" id="decoration" placeholder="Decoration Style" required>
+                    <input type="number" id="capacity" placeholder="Guest Capacity" required>
+                </div>
+                <button type="submit" id="saveBtn">Create Event</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Your Events</h2>
+            <div id="eventList" class="event-grid"></div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
